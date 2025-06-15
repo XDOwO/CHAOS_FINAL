@@ -35,43 +35,6 @@ Transmitter是CHAOS的訊息發送端，他是一個或多個裝置模擬多個A
 
 #### Receiver 訊息接收端
 
-# CHAOS: EXPLOITING STATION TIME SYNCHRONIZATION IN 802.11 NETWORKS
-
-## 書面報告
-
-### 研究動機和背景
-
-#### 無線網路（Wi-Fi）的普及與安全需求
-
-隨著 IEEE 802.11 無線網路（Wi-Fi）的廣泛使用，許多日常應用與基礎設施皆依賴其進行無線通訊。為確保網路中所有設備的同步，
-802.11使用Timing Synchronization Function（TSF） 機制，透過 Beacon frame廣播時戳，協助所有裝置校準本地時鐘。
-這項設計雖具有實用性，但並未加入安全驗證機制，也未限制時間精度，導致其存在潛在的資安風險。以往多數研究聚焦於 Wi-Fi 加密層與認證層的攻擊，對底層協議中的時間同步機制的安全性探討則相對稀少。
-
-#### Beacon Frame: 用於宣告網路存在的封包
-
-Beacon Frame 是WiFi 無線基地台（AP）定期發送的訊息，用來宣告網路存在，協助裝置發現並連接無線網路。
-Beacon Frame包含了網路名稱（SSID）、支援的連線速度、時間同步資訊、加密與網路功能資訊，
-並每隔約 100 毫秒廣播一次，所有裝置都可接收。在網路用量大的地區，幾乎不可能發現虛擬的Beacon Frame。
-
-#### CHAOS的動機與重要性
-
-CHAOS的動機主要著眼於隱密的單向訊息傳遞。現代裝置的連線都需要經過複雜的安全機制，才能確保連線建立成功，攻擊者很難繞過這些訊息保護機制
-，他們需要一種新的方法，不用受到安全機制的監督和控制，來隱密的傳遞訊息而不被人所知。
-再來，Wifi在現代是非常常見的系統，CHAOS利用了Wifi機制中用於表達自身存在的Beacon Frame，能被所有裝置發現的特性，可以在不指定的特定裝置的情況下傳遞訊息。
-同時，CHAOS利用了Beacon Frame的時間同步函數未受保護的特性，透過人為的操控時間同步資訊來隱密的傳輸資訊，也同時利用了都市空間中有極大量的Beacon Frame的廣播特性，用於隱匿訊息的傳遞。
-
-### 方法介紹和分析
-
-#### Transmitter 訊息發送端
-
-Transmitter是CHAOS的訊息發送端，他是一個或多個裝置模擬多個AP(Access Point)。由於每一個AP都會發送自身存在的Beacon Frame，Transmitter可以用發送多個Beacon Frame的方式來模擬多個AP。這使Transmitter在都市環境中很難被發現，因為都市環境的背景中有大量的AP存在，一般觀察者很難發現這些Beacon Frame到底是一般裝置的Beacon Frame，還是CHAOS的Transmitter所發送的Beacon Frame。
-
-##### TXAP(Transmision AP) 與 CAP(Covert AP)
-
-在Transmitter發送的Beacon Frame中，有兩種不同的AP類型，分別是TXAP和CAP。TXAP是用來傳遞訊息的AP，而CAP則是用來隱匿訊息的AP。TXAP會發送包含訊息的Beacon Frame，而CAP則會發送不包含訊息的Beacon Frame。這樣的設計使得Transmitter可以在不被察覺的情況下傳遞訊息。
-
-#### Receiver 訊息接收端
-
 Receiver是CHAOS的訊息接收端，他會利用預先定義好的集合 $A$ 來判定誰是TXAP，誰是CAP，並利用TXAP接收的先後順序和TXAP的時間同步函數來解碼並接收訊息。
 Receiver會偽裝成一般的Station，以避免被發現是CHAOS的接收端。同樣的，Receiver也很難在都市環境中被發現，因為都市環境中也要大量的Station存在。
 
@@ -276,3 +239,4 @@ At Github :<https://github.com/XDOwO/CHAOS_FINAL>
 | --- | -------- | -------- |
 |  分工比例  | 50%         |50%          |
 |  工作內容  | 程式實作，書面報告製作     | 簡報製作     |
+|  簽名  |    ![簽名1](https://hackmd.io/_uploads/rkrodXnQlg.jpg)|![簽名2](https://hackmd.io/_uploads/S1cn_Q3Qxe.png)|
