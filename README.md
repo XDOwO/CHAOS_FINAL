@@ -16,7 +16,9 @@ Install dependencies via pip:
 
 ```bash
 pip install -r requirements.txt
+```
 
+```
 ## 🚀 Usage
 
 This covert communication system consists of three components: a shared configuration generator, a receiver, and a sender. **You must execute them in the following order**:
